@@ -3,11 +3,10 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openai import OpenAI
 
-# Create OpenAI client using environment variable
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, resources={r"/*": {"origins": "*"}})  # Enable CORS for all routes
+
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route('/generate-itinerary', methods=['POST'])
 def generate_itinerary():
