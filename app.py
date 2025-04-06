@@ -1,9 +1,9 @@
 import os
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import flask-cors
+from flask_cors import CORS
 from openai import OpenAI
 
-# Ensure os is imported before using it
+# Create OpenAI client using environment variable
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 app = Flask(__name__)
@@ -31,7 +31,6 @@ def generate_itinerary():
         ]
     )
 
-    # Adjust the access if needed; test locally to see if it works as is:
     itinerary = response.choices[0].message.content
     return jsonify({'itinerary': itinerary})
 
