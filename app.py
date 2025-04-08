@@ -1,9 +1,9 @@
 import os
-import traceback
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import openai
 
+# Set your API key using the environment variable
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
@@ -37,7 +37,7 @@ def generate_itinerary():
         itinerary = response['choices'][0]['message']['content']
         return jsonify({'itinerary': itinerary})
     except Exception as e:
-        # Print the error and full traceback for debugging
+        import traceback
         print("Error in generate_itinerary:", e)
         traceback.print_exc()
         return jsonify({"error": str(e)}), 500
