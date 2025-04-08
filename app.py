@@ -3,7 +3,6 @@ import traceback
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import openai
-openai>=1.0.0
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
