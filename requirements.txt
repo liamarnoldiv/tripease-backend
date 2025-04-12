@@ -2,3 +2,4 @@ flask
 openai
 flask-cors
 openai>=1.0.0
+openai migrate
